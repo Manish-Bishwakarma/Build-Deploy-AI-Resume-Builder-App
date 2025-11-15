@@ -1,0 +1,6 @@
+cd ai-resume-admin
+   npm run develop
+
+# Stay in root directory
+cd "C:\Users\HP\Desktop\Nepathya Collage labs\CollegeGit\Build-Deploy-AI-Resume-Builder-App"
+   npm run dev

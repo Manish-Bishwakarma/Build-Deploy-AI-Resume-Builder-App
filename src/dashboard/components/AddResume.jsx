@@ -24,15 +24,18 @@ function AddResume() {
     const {user}=useUser();
     const [loading,setLoading]=useState(false);
     const navigation=useNavigate();
+    
     const onCreate=async()=>{
         setLoading(true)
         const uuid=uuidv4();
+        
+        // FIXED: Changed userName to username (matching Strapi field)
         const data={
             data:{
                 title:resumeTitle,
-                resumeId:uuid,
+                resumeID:uuid,
                 userEmail:user?.primaryEmailAddress?.emailAddress,
-                userName:user?.fullName
+                username:user?.fullName
             }
         }
 
@@ -45,9 +48,11 @@ function AddResume() {
             }
         },(error)=>{
             setLoading(false);
+            console.error('Error creating resume:', error);
         })
 
     }
+    
   return (
     <div >
         <div className='p-14 py-24 border 
