@@ -18,7 +18,7 @@
     "resumeID": {
       "type": "string"
     },
-    "userEmail": {
+    "email": {
       "type": "email",
       "required": true
     },
@@ -45,6 +45,15 @@
     },
     "summary": {
       "type": "text"
+    },
+    "experience": {
+      "type": "json"
+    },
+    "education": {
+      "type": "json"
+    },
+    "skills": {
+      "type": "json"
     }
   }
 }

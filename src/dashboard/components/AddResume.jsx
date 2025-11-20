@@ -29,7 +29,6 @@ function AddResume() {
         setLoading(true)
         const uuid=uuidv4();
         
-        // FIXED: Changed userName to username (matching Strapi field)
         const data={
             data:{
                 title:resumeTitle,
@@ -49,6 +48,10 @@ function AddResume() {
         },(error)=>{
             setLoading(false);
             console.error('Error creating resume:', error);
+            // Add better error handling
+            if(error.response?.data) {
+                console.error('Error details:', error.response.data);
+            }
         })
 
     }
@@ -72,12 +75,14 @@ function AddResume() {
             <DialogHeader>
             <DialogTitle>Create New Resume</DialogTitle>
             <DialogDescription>
-                <p>Add a title for your new resume</p>
-                <Input className="my-2" 
-                placeholder="Ex.Full Stack resume"
-                onChange={(e)=>setResumeTitle(e.target.value)}
-                />
+                {/* FIXED: Removed <p> tag - DialogDescription already renders as <p> */}
+                Add a title for your new resume
             </DialogDescription>
+            </DialogHeader>
+            <Input className="my-2" 
+            placeholder="Ex.Full Stack resume"
+            onChange={(e)=>setResumeTitle(e.target.value)}
+            />
             <div className='flex justify-end gap-5'>
                 <Button onClick={()=>setOpenDialog(false)} variant="ghost">Cancel</Button>
                 <Button 
@@ -88,7 +93,6 @@ function AddResume() {
                 }
                     </Button>
             </div>
-            </DialogHeader>
         </DialogContent>
         </Dialog>
 

@@ -14,6 +14,7 @@ function PersonalDetail({enabledNext}) {
 
     const [formData,setFormData]=useState();
     const [loading,setLoading]=useState(false);
+    
     useEffect(()=>{
         console.log("---",resumeInfo)
     },[])
@@ -35,9 +36,12 @@ function PersonalDetail({enabledNext}) {
     const onSave=(e)=>{
         e.preventDefault();
         setLoading(true)
+        
+        // FIX: Remove the double wrapping - send formData directly
         const data={
             data:formData
         }
+        
         GlobalApi.UpdateResumeDetail(params?.resumeId,data).then(resp=>{
             console.log(resp);
             enabledNext(true);
@@ -45,6 +49,8 @@ function PersonalDetail({enabledNext}) {
             toast("Details updated")
         },(error)=>{
             setLoading(false);
+            console.error('Update failed:', error.response?.data || error);
+            toast("Failed to update details")
         })
         
     }
@@ -93,7 +99,7 @@ function PersonalDetail({enabledNext}) {
                 <Button type="submit"
                 disabled={loading}>
                     {loading?<LoaderCircle className='animate-spin' />:'Save'}
-                    </Button>
+                </Button>
             </div>
         </form>
     </div>
