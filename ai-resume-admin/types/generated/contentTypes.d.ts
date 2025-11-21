@@ -433,7 +433,7 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
 export interface ApiUserResumeUserResume extends Struct.CollectionTypeSchema {
   collectionName: 'user_resumes';
   info: {
-    displayName: 'user-resume';
+    displayName: 'user-resume ';
     pluralName: 'user-resumes';
     singularName: 'user-resume';
   };
@@ -446,7 +446,7 @@ export interface ApiUserResumeUserResume extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     education: Schema.Attribute.JSON;
-    email: Schema.Attribute.Email & Schema.Attribute.Required;
+    email: Schema.Attribute.Email;
     experience: Schema.Attribute.JSON;
     firstName: Schema.Attribute.String;
     jobTitle: Schema.Attribute.String;
@@ -459,15 +459,16 @@ export interface ApiUserResumeUserResume extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     phone: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    resumeID: Schema.Attribute.String;
+    resumeId: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
     skills: Schema.Attribute.JSON;
-    summary: Schema.Attribute.Text;
+    summary: Schema.Attribute.Blocks;
     themeColor: Schema.Attribute.String;
     title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    username: Schema.Attribute.String;
+    userEmail: Schema.Attribute.Email & Schema.Attribute.Required;
+    userName: Schema.Attribute.String;
   };
 }
 

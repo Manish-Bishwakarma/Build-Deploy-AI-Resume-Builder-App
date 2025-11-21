@@ -4,7 +4,7 @@
   "info": {
     "singularName": "user-resume",
     "pluralName": "user-resumes",
-    "displayName": "user-resume"
+    "displayName": "user-resume "
   },
   "options": {
     "draftAndPublish": true
@@ -15,44 +15,53 @@
       "type": "string",
       "required": true
     },
-    "resumeID": {
-      "type": "string"
+    "resumeId": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
     },
-    "email": {
+    "userEmail": {
       "type": "email",
       "required": true
     },
-    "username": {
-      "type": "string"
+    "userName": {
+      "type": "string",
+      "required": false
     },
     "firstName": {
-      "type": "string"
+      "type": "string",
+      "required": false
     },
     "lastName": {
-      "type": "string"
+      "type": "string",
+      "required": false
     },
     "jobTitle": {
       "type": "string"
     },
     "address": {
-      "type": "string"
+      "type": "string",
+      "required": false
     },
     "phone": {
       "type": "string"
+    },
+    "email": {
+      "type": "email"
     },
     "themeColor": {
       "type": "string"
     },
     "summary": {
-      "type": "text"
+      "type": "blocks"
     },
     "experience": {
       "type": "json"
     },
-    "education": {
+    "skills": {
       "type": "json"
     },
-    "skills": {
+    "education": {
       "type": "json"
     }
   }
